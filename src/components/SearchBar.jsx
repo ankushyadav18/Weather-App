@@ -1,6 +1,6 @@
 function SearchBar({ city, setCity, getWeather, loading }) {
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-col sm:flex-row gap-3">
       <input
         type="text"
         placeholder="Enter city name"
@@ -11,13 +11,13 @@ function SearchBar({ city, setCity, getWeather, loading }) {
             getWeather();
           }
         }}
-        className="border border-gray-300 rounded-lg p-3 w-full"
+        className="border border-gray-300 rounded-lg p-3 w-full outline-none focus:ring-2 focus:ring-blue-500"
       />
 
       <button
         onClick={getWeather}
         disabled={loading}
-        className="bg-blue-500 text-white px-5 rounded-lg disabled:bg-gray-400"
+        className="bg-blue-500 hover:bg-blue-600 transition text-white px-5 py-3 rounded-lg disabled:bg-gray-400 w-full sm:w-auto"
       >
         {loading ? "Loading..." : "Search"}
       </button>

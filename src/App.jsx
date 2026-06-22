@@ -57,35 +57,46 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-500 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-xl shadow-lg w-96">
-        <h1 className="text-3xl font-bold text-center mb-4">Weather App</h1>
+  <div className="min-h-screen bg-blue-500 flex justify-center items-center p-4">
+    <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg w-full max-w-md">
+      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-4">
+        Weather App
+      </h1>
 
-        <SearchBar
-          city={city}
-          setCity={setCity}
-          getWeather={getWeather}
-          loading={loading}
-        />
-        {loading && (
-          <p className="text-center mt-4 font-semibold">Loading...</p>
-        )}
+      <SearchBar
+        city={city}
+        setCity={setCity}
+        getWeather={getWeather}
+        loading={loading}
+      />
 
-        {weather && <WeatherCard weather={weather} />}
-        {forecast.length > 0 && (
-          <div className="mt-6">
-            <h2 className="text-xl font-bold mb-3">Forecast</h2>
+      {loading && (
+        <p className="text-center mt-4 font-semibold">
+          Loading...
+        </p>
+      )}
 
-            <div className="flex gap-3 overflow-x-auto">
-              {forecast.slice(0, 5).map((item) => (
-                <ForecastCard key={item.dt} item={item} />
-              ))}
-            </div>
+      {weather && <WeatherCard weather={weather} />}
+
+      {forecast.length > 0 && (
+        <div className="mt-6">
+          <h2 className="text-lg sm:text-xl font-bold mb-3">
+            Forecast
+          </h2>
+
+          <div className="flex gap-3 overflow-x-auto pb-2">
+            {forecast.slice(0, 5).map((item) => (
+              <ForecastCard
+                key={item.dt}
+                item={item}
+              />
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
